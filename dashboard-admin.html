@@ -1,11 +1,10 @@
-{% load static %}
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SJB | Admin Dashboard</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -13,8 +12,8 @@
 <body>
 
 <header class="container topbar">
-  <a class="brand" href="{% url 'home' %}">
-    <img src="{% static 'logo1.png' %}" alt="SJB Logo">
+  <a class="brand" href="index.html">
+    <img src="logo1.png" alt="SJB Logo">
     <div>
       <div class="title">SJB</div>
       <div class="subtitle">Unlock Your Potential</div>
@@ -22,21 +21,9 @@
   </a>
 
   <nav class="nav">
-    <a href="{% url 'home' %}" data-i18n="navHome">Home</a>
-    <a href="{% url 'jobs' %}" data-i18n="navJobs">Jobs</a>
-    {% if user.is_authenticated %}
-      {% if user.role == 'student' %}
-        <a href="{% url 'dashboard-user' %}" id="navDash" data-i18n="navDash">Dashboard</a>
-      {% elif user.role == 'company' %}
-        <a href="{% url 'dashboard-company' %}" id="navDash" data-i18n="navDash">Dashboard</a>
-      {% elif user.role == 'admin' %}
-        <a href="{% url 'dashboard-admin' %}" class="active" id="navDash" data-i18n="navDash">Dashboard</a>
-      {% endif %}
-      <a href="{% url 'logout' %}" id="navLogin" data-i18n="logout">Logout</a>
-    {% else %}
-      <a href="{% url 'auth' %}" id="navLogin" data-i18n="navLogin">Login</a>
-      <a href="{% url 'signup' %}" id="navReg" data-i18n="SignUp">Register</a>
-    {% endif %}
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="admin-dashboard.html" class="active">Dashboard</a>
   </nav>
 
   <div class="actions">
@@ -46,8 +33,8 @@
 </header>
 
 <main class="container">
-  <!-- Pass backend data to JS via data attributes - Fixed duplicate ID and merged -->
-  <div id="adminWrap" data-user-count="{{ user_count|default:0 }}" data-job-count="{{ job_count|default:0 }}"></div>
+  <!-- ✨ هنا بيتعرض كل محتوى الأدمن -->
+  <div id="adminWrap"></div>
 </main>
 
 <footer class="footer">
@@ -56,9 +43,12 @@
   </div>
 </footer>
 
-  <script src="{% static 'i18n.js' %}"></script>
-  <script src="{% static 'data.js' %}"></script>
-  <script src="{% static 'app.js' %}"></script>
+<script src="i18n.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
+
+
+

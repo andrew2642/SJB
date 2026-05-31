@@ -1,19 +1,18 @@
-{% load static %}
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SJB | Company Dashboard</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 <body>
   <header class="container topbar">
-    <a class="brand" href="{% url 'home' %}">
-      <img src="{% static 'logo1.png' %}" alt="SJB Logo">
+    <a class="brand" href="index.html">
+      <img src="logo1.png" alt="SJB Logo">
       <div>
         <div class="title">SJB</div>
         <div class="subtitle" data-i18n="brandSubtitle">Unlock Your Potential</div>
@@ -21,21 +20,9 @@
     </a>
 
     <nav class="nav">
-      <a href="{% url 'home' %}" data-i18n="navHome">Home</a>
-      <a href="{% url 'jobs' %}" data-i18n="navJobs">Jobs</a>
-      {% if user.is_authenticated %}
-        {% if user.role == 'student' %}
-          <a href="{% url 'dashboard-user' %}" id="navDash" data-i18n="navDash">Dashboard</a>
-        {% elif user.role == 'company' %}
-          <a href="{% url 'dashboard-company' %}" class="active" id="navDash" data-i18n="navDash">Dashboard</a>
-        {% elif user.role == 'admin' %}
-          <a href="{% url 'dashboard-admin' %}" id="navDash" data-i18n="navDash">Dashboard</a>
-        {% endif %}
-        <a href="{% url 'logout' %}" id="navLogin" data-i18n="logout">Logout</a>
-      {% else %}
-        <a href="{% url 'auth' %}" id="navLogin" data-i18n="navLogin">Login</a>
-        <a href="{% url 'signup' %}" id="navReg" data-i18n="SignUp">Register</a>
-      {% endif %}
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="jobs.html" data-i18n="navJobs">Jobs</a>
+      <a href="company-dashboard.html" class="active" data-i18n="navDash">Dashboard</a>
     </nav>
 
     <div class="actions">
@@ -121,8 +108,10 @@
     <div class="container" data-i18n="footerText">© 2026 Student Job Board. All rights reserved.</div>
   </footer>
 
-  <script src="{% static 'i18n.js' %}"></script>
-  <script src="{% static 'data.js' %}"></script>
-  <script src="{% static 'app.js' %}"></script>
+  <script src="i18n.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
+
+
